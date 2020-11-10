@@ -1,0 +1,558 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-primary: #083D77;
+  --clr-accent: #BBC9E6;
+  --clr-dark: #555857;
+  --clr-grey: #bdbdbd;
+  --clr-light: #F7F7F7;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--clr-dark);
+  overflow-x: hidden;
+}
+
+body .nav-open {
+  height: 100vh;
+}
+
+section,
+header,
+footer {
+  padding: 1em;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+}
+
+h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+  font-size: 3rem;
+}
+
+h2 { 
+  font-weight: 400;
+  font-size: 2rem;
+  color: inherit;
+  line-height: 1.5;
+}
+
+h3 {
+  color: inherit;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: .25em 1.5em;
+  margin-bottom: .5em;
+  border-radius: 100vw;
+  border: 3px solid var(--clr-primary);
+  z-index: 1;
+}
+
+.btn-primary {
+  color: var(--clr-light);
+  background-color: var(--clr-primary);
+  transition: opacity 100ms linear;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  opacity: .5;
+}
+
+
+.btn-outline {
+  color: var(--clr-primary);
+  background: transparent;
+  transition: color 100ms linear, background 100ms linear;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+}
+
+/* Hamburger menu */
+.burger {
+  display: block;
+  position: relative;
+}
+
+.burger-container {
+  cursor: pointer;
+  padding: 12px 4px;
+  z-index: 6;
+}
+
+.burger,
+.burger::before,
+.burger::after {
+  width: 2em;
+  height: 3px;
+  z-index: 5;
+  background-color: var(--clr-primary);
+  transition: transform 500ms cubic-bezier(.44,.43,.12,1.25), background-color 250ms linear;
+}
+
+.burger::before,
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.burger::before {
+  bottom: 6px;
+}
+
+.burger::after {
+  top: 6px;
+}
+
+body.nav-open .burger {
+  transform: translateX(50px);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+body.nav-open .burger::before {
+  transform: translateX(-50px) translateY(6px) rotate(45deg);
+}
+
+body.nav-open .burger::after {
+  transform: translateX(-50px) translateY(-6px) rotate(-45deg);
+}
+
+
+/* Mobile nav */
+
+.nav {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  background-color: var(--clr-primary);
+  top: 4em;
+  left: 40%;
+  right: 0;
+  bottom: 0em;
+  transform: translateX(100%);
+  transition: transform 300ms ease-in-out;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  overflow: hidden;
+}
+
+.nav-open .nav {
+  transform: translateX(0);
+}
+
+/* darken page when nav menu open */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 150ms linear;
+  display: none;
+}
+
+body.nav-open::before {
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .50;
+  display: inherit;
+}
+
+.nav-list-item {
+  color: var(--clr-light);
+  padding: 1em;
+  border-bottom: 1px solid var(--clr-light);
+  cursor: pointer;
+  transition: background-color 150ms linear;
+  font-weight: 400;
+}
+
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-list-item:active,
+.nav-list-item:focus,
+.nav-list-item:hover {
+  background-color: var(--clr-accent);
+}
+
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   max-width: 1800px;
+   margin: 0 auto;
+}
+
+/* regular nav */
+@media(min-width: 700px){
+  .burger-container {
+    display: none;
+  }
+
+  body::before {
+    content: '';
+    display: none;
+  }
+  
+  .nav {
+    position: static;
+    transform: translateX(0);
+    border-radius: 0;
+    background-color: #ffffff;
+    width: 100%;
+    margin-top: 5px;
+    z-index: 5;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list-item {
+    border: 0;
+    color: inherit;
+    padding: 0;
+    margin-left: 1.5em;
+    position: relative;
+  }
+
+  .nav-list-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--clr-primary);
+    transform: ScaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease-in-out;
+  }
+
+  .nav-list-item:hover,
+  .nav-list-item:focus {
+    background-color: inherit;
+  }
+
+  .nav-list-item:hover::after,
+  .nav-list-item:focus::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .nav-list-item:first-of-type {
+    margin-left: .5em;
+  }
+
+  .nav-list-item:nth-last-of-type(2),
+  .nav-list-item:last-of-type{
+    color: var(--clr-primary);
+  }
+
+  .nav-list-item:nth-last-of-type(2) {
+    margin-left: auto;
+  }
+}
+
+
+/*  Hero */
+.hero-container {
+  position: relative;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.hero-content {
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero-content .title {
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+  font-size: clamp(2rem, 9vw, 3.5rem);
+}
+
+.hero-content p {
+  margin-bottom: 3em;
+  font-size: clamp(1rem, 9vw, 1.5rem);
+}
+
+.hero-content div:last-of-type {
+  display: grid;
+  justify-items: center;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+.clouds {
+  position: absolute;
+  width: 200%;
+  /* height: 7em; */
+  left: 0;
+  bottom: 0;
+}
+
+.clouds.grey-clouds {
+  fill: var(--clr-light);
+  bottom: -10px;
+}
+
+.clouds.colored-clouds {
+  fill: var(--clr-accent);
+}
+
+/* Cloud animation */
+@keyframes move {
+  0% {
+      transform: translateX(-50%)
+  }
+  
+  100% {
+      transform: translateX(0%)
+  }
+}
+
+@media(min-width: 700px){
+  .hero-container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .hero-content div:last-child {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .colored-clouds {
+    width: 200%;
+    height: auto;
+    transform: translateX(-50%);
+    animation: move 60s linear infinite;
+  }
+  
+  .grey-clouds {
+    width: 200%;
+    height: auto;
+    transform: translateX(-50%);
+    animation: move 90s linear infinite;
+  }
+}
+
+.companies {
+  background-color: var(--clr-light);
+  padding-top: 2em;
+}
+
+.companies .companies-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 30em;
+}
+
+.companies .companies-text {
+  color: var(--clr-grey);
+}
+
+.companies .companies-logo {
+  width: 40px;
+  height: auto;
+}
+
+/* hack for weird apple logo */
+.companies .companies-logo:last-child {
+  width: 40px;
+  height: 40px;
+}
+
+.dashboard {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin: 1em 0 2em 0;
+  max-width: 20em;
+}
+
+.dashboard-image {
+  object-fit: contain;
+  width: 100%;
+  max-width: 50em;
+  margin-bottom: 1em;
+}
+
+.features {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+  /*  Could do this in an attempt to aviod a media query, but
+      I would have to have a media query for the text-align once we 
+      reach the point where text and picture should be on the same line */
+  /* display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1em; */
+}
+
+.features-text {
+  margin-bottom: 1em;
+}
+
+.features-image {
+  object-fit: contain;
+  width: 80%;
+  margin-bottom: 2em;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+}
+
+/* Fixing my poor cropping skills for the code picture */
+.features-image:first-of-type{
+  padding: 10px;
+}
+
+@media(min-width: 700px) {
+  .features {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: start;
+    column-gap: 1em;
+    row-gap: 12em;
+    grid-auto-flow: dense;
+    margin-bottom: 3em;
+  }
+
+  .features > * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .features-text {
+    text-align: left;
+  }
+
+  .features-text.grid-right {
+    grid-column: 2;
+  }
+
+  .features-image.grid-right {
+    justify-self: end;
+  }
+
+  .features-image.grid-left {
+    justify-self: start;
+  }
+
+  .grid-left {
+    transform: translateX(-25%)
+  }
+  
+  .grid-right {
+    transform: translateX(25%)
+  }
+  
+  .grid-left,
+  .grid-right {
+    opacity: 0;
+    transition: transform 400ms ease-in, opacity 400ms linear;
+  }
+  
+  .grid-left.appear,
+  .grid-right.appear {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.footer {
+  background-color: var(--clr-primary);
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.footer img:nth-of-type(2) {
+  margin-left: auto;
+}
+
+.footer .socials-logo{
+  cursor: pointer;
+  transition: 150ms linear;
+}
+
+.footer .socials-logo:hover,
+.footer .socials-logo:focus {
+  opacity: .5;
+}
