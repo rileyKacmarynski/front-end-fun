@@ -1,0 +1,56 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, p {
+    margin: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    /* height: 200px;
+    width: 400px; */
+    height: 600px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.colored-clouds {
+    position: absolute;
+    left: 0;
+    bottom: -5%;
+    fill: #bbc9e6;
+    width: 200%;
+    transform: translateX(-50%);
+    animation: move 70s linear infinite;
+}
+
+.grey-clouds {
+    position: absolute;
+    left: 0;
+    bottom: -7%;
+    width: 200%;
+    fill: #f7f7f7;
+    transform: translateX(0%);
+    animation: moveback 180s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(-50%)
+    }
+    
+    100% {
+        transform: translateX(0%)
+    }
+}
+
+@keyframes moveback {
+    0% {
+        transform: translateX(0%)
+    }
+    
+    100% {
+        transform: translateX(-50%)
+    }
+}
