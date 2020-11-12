@@ -1,0 +1,149 @@
+:root{
+  --clr-bg-primary: rgb(33 35 41);
+  --clr-bg-secondary: rgb(41 44 51);
+  --clr-white: rgb(255, 255, 255);
+  --clr-black: rgb(20, 20, 20);
+  --clr-grey: rgb(144 146 150);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, 'sans-serif';
+  line-height: 1.5;
+  background-color: var(--clr-bg-primary);
+  color: var(--clr-white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  content: "\f007";
+}
+
+.container {
+  padding: 0 3rem;
+}
+
+.nav {
+  position: sticky;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  height: 4rem;
+  margin-bottom: -4rem;
+}
+
+.nav > ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: flex-end;
+}
+
+.search i {
+  color: var(--clr-white);
+}
+
+.logo {
+  fill: var(--clr-white);
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.nav-link{
+  text-transform: uppercase;
+  size: .875rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: .75rem 1rem;
+  margin: 0 .5rem;
+  border-radius: 5px;
+  transition: background-color .1s linear;
+}
+
+.nav-link:hover,
+.nav-link:focus-within{
+  background-color: rgba(255, 255, 255, .25);
+}
+
+.nav-item:first-child {
+  margin-right: auto;
+  margin-top: 6px;
+}
+
+.search{
+  margin-left: auto;
+  margin-top: 6px;
+}
+
+.search a {
+  padding: .25rem;  
+}
+
+.search a:hover i{
+  transition: color .1s linear;
+}
+
+.search a:hover i{
+  color: rgba(255, 255, 255, .75);
+}
+
+.search a:focus,
+.profile button:focus {
+  outline: 2px solid rgba(255, 255, 255, .75);
+}
+
+.profile {
+  margin-left: 2.5rem;
+}
+
+.profile button {
+  color: inherit;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .25);
+  padding: .5rem;
+  transition: background-color .1s linear;
+}
+
+.profile button:hover{
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.hero-banner {
+  height: 40rem;
+  position: relative;
+}
+
+.hero-banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100%;
+  z-index: -5;
+}
+
+
