@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;0,900;1,400&display=swap');
+
 :root{
   --clr-bg-primary: rgb(33 35 41);
   --clr-bg-secondary: rgb(41 44 51);
   --clr-white: rgb(255, 255, 255);
   --clr-black: rgb(20, 20, 20);
   --clr-grey: rgb(144 146 150);
+  --clr-gradient: rgba(196, 150, 171, 1);
 }
 
 *, *::before, *::after {
@@ -13,7 +16,7 @@
 }
 
 body {
-  font-family: Helvetica, Arial, 'sans-serif';
+  font-family: 'Roboto', Helvetica, 'sans-serif';
   line-height: 1.5;
   background-color: var(--clr-bg-primary);
   color: var(--clr-white);
@@ -24,6 +27,50 @@ a {
   color: inherit;
 }
 
+h1 {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .875rem;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  background-color: var(--clr-white);
+  border: 2px solid var(--clr-white);
+  border-radius: 5px;
+  padding: .875rem 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 1.75px;
+  font-size: .875rem;
+  font-weight: 600;
+  transition: opacity .1s linear;
+}
+
+/* give the button to the right some margin */
+.btn + .btn {
+  margin-left: 1rem;
+}
+
+.btn:hover{
+  opacity: .8;
+}
+
+.btn:focus {
+  border: 2px solid black;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--clr-white);
+}
+
+
 .icon::before {
   display: inline-block;
   font-style: normal;
@@ -32,11 +79,30 @@ a {
   -webkit-font-smoothing: antialiased;
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900; 
-  content: "\f007";
+}
+
+.icon.play::before {
+  content: "\f04b";
+  margin-right: .5rem;
 }
 
 .container {
   padding: 0 3rem;
+}
+
+header {
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-image: linear-gradient(rgba(0, 0, 0, .6), transparent);
 }
 
 .nav {
@@ -45,6 +111,7 @@ a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   height: 4rem;
   margin-bottom: -4rem;
+  z-index: 1;
 }
 
 .nav > ul {
@@ -134,16 +201,43 @@ a {
 .hero-banner {
   height: 40rem;
   position: relative;
+  opacity: 1;
+  background-image: linear-gradient(75deg, var(--clr-gradient) 30%, transparent 70%),
+                    radial-gradient(ellipse at top left, var(--clr-gradient) 10%, transparent 80%);
 }
 
-.hero-banner img {
+.hero-banner .image-container {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
+  bottom: 0;
   height: auto;
-  width: 100%;
-  z-index: -5;
+  width: 85%;
+  z-index: -1;
+  background-image: url(assets/rod-long-6SMF42-JTAc-unsplash.jpg);
+  background-size: cover;
+  background-position: left;
 }
 
+.hero-banner .container {
+  height: 100%;
+  position: relative;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between; 
+}
 
+.header-details {
+  /* flex-grow: 1; */
+  flex-basis: 30%;
+  /* width: 30% */
+}
+
+.header-details > * {
+  margin-bottom: 1rem;
+}
+
+.header-details > *:last-child{
+  margin-bottom: 0;
+}
