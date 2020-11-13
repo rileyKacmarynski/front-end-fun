@@ -27,6 +27,10 @@ a {
   color: inherit;
 }
 
+ul {
+  list-style: none;
+}
+
 h1 {
   font-size: 4rem;
   line-height: 1;
@@ -71,7 +75,8 @@ h3 {
 }
 
 
-.icon::before {
+.icon::before, 
+.icon::after {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -115,7 +120,6 @@ header::before {
 }
 
 .nav > ul {
-  list-style: none;
   height: 100%;
   display: flex;
   align-items: center;
@@ -240,4 +244,104 @@ header::before {
 
 .header-details > *:last-child{
   margin-bottom: 0;
+}
+
+.options-toggle {
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: opacity .1s linear;
+}
+
+.options-toggle:hover {
+  opacity: .8;
+}
+
+.content-container {
+  margin-top: 2rem;
+}
+
+.content-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: .25rem;
+}
+
+.content-title h2 {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+
+.content-title a {
+  text-transform: uppercase;
+  color: var(--clr-grey);
+  margin-left: 1rem;
+}
+
+.content-title i {
+  color: white;
+  margin-left: .25rem;
+}
+
+.content-list {
+  display: flex;
+  gap: .25rem;
+}
+
+.content-tile {
+  width: 25%;
+}
+
+.content-tile figcaption {
+  position: relative;
+}
+
+.content-tile img {
+  width: 100%;
+  height: auto;
+}
+
+.content-tile .image-container {
+  position: relative;
+}
+
+.content-tile .image-container div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 4rem;
+  width: 4rem;
+  transform: translate(-50%, -50%);
+  background-color: var(--clr-white);
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+  opacity: .85;
+}
+
+.content-tile .image-container i{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* transform: translate(-50%, -50%); */
+  color: var(--clr-black);
+  opacity: .85;
+}
+
+.fig-prompt {
+  text-transform: uppercase;
+  color: var(--clr-grey);
+  margin-bottom: .25rem;
+}
+
+.fig-title {
+  text-transform: none;
+  font-size: 1.125rem;
+}
+
+.fig-options{
+  color: var(--clr-grey);
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
 }
