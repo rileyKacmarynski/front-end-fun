@@ -95,11 +95,11 @@ h3 {
   padding: 0 3rem;
 }
 
-header {
+nav {
   position: relative;
 }
 
-header::before {
+nav::before {
   content: "";
   position: absolute;
   top: 0;
@@ -117,6 +117,7 @@ header::before {
   height: 4rem;
   margin-bottom: -4rem;
   z-index: 1;
+  top: 0;
 }
 
 .nav > ul {
@@ -135,6 +136,7 @@ header::before {
 }
 
 .nav-item {
+  z-index: 5;
   cursor: pointer;
 }
 
@@ -150,7 +152,8 @@ header::before {
 }
 
 .nav-link:hover,
-.nav-link:focus-within{
+.nav-link:focus-within,
+.nav-link.active {
   background-color: rgba(255, 255, 255, .25);
 }
 
@@ -168,11 +171,11 @@ header::before {
   padding: .25rem;  
 }
 
-.search a:hover i{
+.search a i{
   transition: color .1s linear;
 }
 
-.search a:hover i{
+.search a:hover {
   color: rgba(255, 255, 255, .75);
 }
 
@@ -261,9 +264,11 @@ header::before {
 }
 
 .content-title {
+  cursor: pointer;
   display: flex;
   align-items: center;
   margin-bottom: .25rem;
+  max-width: 300px;
 }
 
 .content-title h2 {
@@ -275,6 +280,27 @@ header::before {
   text-transform: uppercase;
   color: var(--clr-grey);
   margin-left: 1rem;
+  transform: translateX(-100%);
+  transition: transform .25s ease-in-out;
+  transition-delay: .1s;
+}
+
+.content-title a span {
+  opacity: 0;
+  margin-right: .5rem;
+  transition: opacity .15s linear;
+}
+
+.content-title:hover a span,
+.content-title:focus a span {
+  opacity: 1;
+  transition-delay: .15s;
+}
+
+.content-title:hover a,
+.content-title:focus a {
+  transform: translateX(0%);
+  transition-delay: 0s;
 }
 
 .content-title i {
@@ -295,26 +321,36 @@ header::before {
   position: relative;
 }
 
-.content-tile img {
-  width: 100%;
-  height: auto;
-}
 
 .content-tile .image-container {
   position: relative;
+  cursor: pointer;
+}
+
+.content-tile .image-container img {
+  width: 100%;
+  height: auto;
+  
 }
 
 .content-tile .image-container div{
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   transform: translate(-50%, -50%);
   background-color: var(--clr-white);
   background-position: center;
   background-size: contain;
   border-radius: 50%;
+  opacity: 0;
+  box-shadow: 2px, 4px, 10px, rgba(0, 0, 0, .6);
+  transition: opacity .1s linear;
+}
+
+.content-tile .image-container:hover div,
+.content-tile .image-container:focus div {
   opacity: .85;
 }
 
@@ -340,8 +376,14 @@ header::before {
 }
 
 .fig-options{
+  cursor: pointer;
   color: var(--clr-grey);
   position: absolute;
   top: .5rem;
   right: 1rem;
+  transition: opacity .1s linear;
+}
+
+.fig-options:hover {
+  opacity: .85;
 }
