@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;0,900;1,400&display=swap');
 
+
 :root{
   --clr-bg-primary: rgb(33 35 41);
   --clr-bg-secondary: rgb(41 44 51);
@@ -95,20 +96,6 @@ h3 {
   padding: 0 3rem;
 }
 
-nav {
-  position: relative;
-}
-
-nav::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  background-image: linear-gradient(rgba(0, 0, 0, .6), transparent);
-}
 
 .nav {
   position: sticky;
@@ -118,6 +105,34 @@ nav::before {
   margin-bottom: -4rem;
   z-index: 1;
   top: 0;
+  transform-origin: top;
+  transition: transform .25s ease-out, background-color .2s linear;
+  transition-delay: .25s;
+}
+
+
+.nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-image: linear-gradient(rgba(0, 0, 0, .6), transparent);
+  transition: opacity .25s linear .15s;
+}
+
+.nav.hidden {
+  transform: translateY(-4rem);
+}
+
+.nav.dark {
+  background-color: var(--clr-bg-primary);
+}
+
+.nav.dark::before {
+  opacity: 0;
 }
 
 .nav > ul {
@@ -142,7 +157,7 @@ nav::before {
 
 .nav-link{
   text-transform: uppercase;
-  size: .875rem;
+  font-size: .875rem;
   font-weight: bold;
   letter-spacing: 1px;
   padding: .75rem 1rem;
@@ -345,7 +360,7 @@ nav::before {
   background-size: contain;
   border-radius: 50%;
   opacity: 0;
-  box-shadow: 2px, 4px, 10px, rgba(0, 0, 0, .6);
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, .6);
   transition: opacity .1s linear;
 }
 
