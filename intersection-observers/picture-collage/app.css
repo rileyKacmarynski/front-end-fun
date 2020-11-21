@@ -11,15 +11,30 @@ img {
 }
 
 .grid {
+  --row-height: 100px;
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(12, auto);
+  grid-template-columns: repeat(12, 7.5%);
+  grid-template-rows: repeat(auto-fill, var(--row-height));
+  grid-auto-rows: var(--row-height);
   gap: .5rem;
   grid-auto-flow: dense;
+  justify-content: center;
 }
 
 .grid-item {
-  grid-column: span 3;
-  grid-row: span calc(var(--image-height) / 100);
+  /* grid-column: span 3; */
+  grid-row: span var(--image-height);
+  grid-column: span var(--image-width);
+  animation: fade .75s infinite alternate;
+}
+
+@keyframes fade {
+  from {
+    background-color: rgba(0, 0, 0, .4);
+  }
+  to {
+    background-color: rgba(0, 0, 0, .55);
+  }
 }
