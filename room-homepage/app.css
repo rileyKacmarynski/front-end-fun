@@ -11,17 +11,39 @@
   --Very-Dark-Gray: hsl(0, 0%, 27%);
   --space-large: 3rem;
   --space-small: 1.5rem;
+  --nav-transition-time: .2s;
 }
 
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
-
+/* ------------------------- Global Styles ------------------------- */
 body {
   font-family: 'Spartan', sans-serif;
   font-size: .75rem;
   line-height: 1.5;
   color: var(--Dark-Gray);
   background-color: var(--White);
+}
+
+body.nav-open {
+  position: relative;
+  overflow-y: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color var(--nav-transition-time) linear;
+}
+
+body.nav-open::before {
+  display: block;
+  background-color: rgba(0, 0, 0, .5);
 }
 
 h1 {
@@ -35,6 +57,11 @@ h2 {
   font-size: 1.25em;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 main img {
@@ -65,7 +92,7 @@ main img {
 }
 
 .btn:hover,
-.btn:active {
+.btn:focus {
   color: var(--Dark-Gray);
 }
 
@@ -103,72 +130,121 @@ main img {
   max-width: 600px;
 }
 
-/* Hamburger menu */
-.burger {
-  display: block;
-  position: relative;
-}
 
+/* ------------------------- Hamburger menu ------------------------- */
 .burger-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   cursor: pointer;
-  padding: 12px 4px;
 }
 
-.burger,
-.burger::before,
-.burger::after {
+.burger {
   width: 2em;
   height: 2px;
   background-color: var(--White);
+  transition: 
+    background-color var(--nav-transition-time) linear,
+    opacity var(--nav-transition-time) linear,
+    transform var(--nav-transition-time) linear;
 }
 
-.burger::before,
-.burger::after {
-  content: '';
-  position: absolute;
-  left: 0;
+.burger.top {
+  transform-origin: right;
 }
 
-.burger::before {
-  bottom: 6px;
+.burger.bottom {
+  transform-origin: right;
 }
 
-.burger::after {
-  top: 6px;
+body.nav-open .burger.middle,
+body.nav-open .burger.top,
+body.nav-open .burger.bottom {
+  background-color: var(--Dark-Gray);
 }
 
-body.nav-open .burger {
+body.nav-open .burger.top {
+  transform: translateY(-3px) rotateZ(-45deg);
 }
 
-body.nav-open .burger::before {
+body.nav-open .burger.middle {
+  opacity: 0;
 }
 
-body.nav-open .burger::after {
+body.nav-open .burger.bottom {
+  transform: translateY(3px) rotateZ(45deg);
+  transform-origin: right;
 }
 
+/* ------------------------- header/nav  ------------------------- */
 header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-}
+}  
 
-/* nav */
 .nav {
   position: relative;
   padding-top: var(--space-small);
   padding-bottom: var(--space-small);
   z-index: 1;
+  background-color: transparent;
+  transition: 
+    background-color var(--nav-transition-time) linear, 
+    padding var(--nav-transition-time) ease-in-out;
+  transform-origin: top;
+}
+
+body.nav-open .nav {
+  background-color: var(--White);
+  padding-top: calc(var(--space-small) * 2);
+  padding-bottom: calc(var(--space-small) * 2);
+}
+
+.nav-items {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
   position: absolute;
-  top: calc(var(--space-small) + 7px);  /* 7px is half line-height at 14px font */
   left: 50%;
   transform: translateX(-50%);
   object-fit: none;
+  transition: opacity var(--nav-transition-time) linear;
+  transition-delay: var(--nav-transition-time);
 }
 
+body.nav-open .logo {
+  opacity: 0;
+}
+
+.nav-links {
+  visibility: hidden;
+  flex: 5;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  color: var(--Black);
+  font-weight: 700;
+  transform: translateY(-12px);
+  opacity: 0;
+  transition: opacity var(--nav-transition-time) linear, transform var(--nav-transition-time) ease-in-out;
+}
+
+body.nav-open .nav-links{
+  visibility: inherit;
+  opacity: 1;
+  transform: translateY(0);  
+  transition-delay: var(--nav-transition-time); 
+}
+
+/* ------------------------- Slider Section  ------------------------- */
 .slider {
   position: relative;
 }
@@ -190,7 +266,24 @@ header {
   z-index: -2;
 }
 
-/* main cta */
+.slider-controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+
+.slider-controls > div {
+  cursor: pointer;
+  background-color: var(--Black);
+  padding: 1rem;
+}
+
+.slider-controls > div + div {
+  border-left: 1px solid rgba(255, 255, 255, .25);
+}
+
+/* ------------------------- main cta  ------------------------- */
 .cta {
   padding-top: var(--space-large);
   padding-bottom: var(--space-large);
@@ -204,6 +297,7 @@ header {
   margin-bottom: 2rem;
 }
 
+/* ------------------------- about  ------------------------- */
 .about {
   padding-top: var(--space-large);
   padding-bottom: var(--space-large);
@@ -212,3 +306,10 @@ header {
 .about h2 {
   margin-bottom: var(--space-small);
 }
+
+
+
+
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

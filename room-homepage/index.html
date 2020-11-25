@@ -11,11 +11,21 @@
 </head>
 <body>
   <header>
-    <nav class="nav container">
-      <div id="nav-toggle" class="burger-container" aria-label="closed" aria-role="button">
-        <span class="burger"></span>
+    <nav class="nav">
+      <div class="nav-items container">
+        <div id="nav-toggle" class="burger-container" aria-label="closed" aria-role="button">
+          <span class="burger top"></span>
+          <span class="burger middle"></span>
+          <span class="burger bottom"></span>
+        </div>
+        <img class="logo" src="images/logo.svg" alt="room logo">  
+        <ul class="nav-links" aria-hidden="true" >
+          <li><a href="#">home</a></li>
+          <li><a href="#">shop</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">contact</a></li>
+        </ul>
       </div>
-      <img class="logo" src="images/logo.svg" alt="room logo">
     </nav>
   </header>
   <main>
@@ -23,6 +33,10 @@
       <picture>
         <source srcset="images/desktop-image-hero-1.jpg" media="(min-width: 500px)">
         <img src="images/mobile-image-hero-1.jpg" alt="table and chairs">
+        <div class="slider-controls">
+          <div class="left"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 0L1 12l12 12" fill="none" fill-rule="evenodd"/></svg></div>
+          <div class="right"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M1 0l12 12L1 24"  fill="none" fill-rule="evenodd"/></svg></div>
+        </div>
       </picture>
     </section>
     <section class="cta container">
