@@ -275,6 +275,18 @@ body.nav-open .nav-links{
 /* ------------------------- Slider Section  ------------------------- */
 .slider {
   position: relative;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+  z-index: -2;
+  display: flex;
+  height: 100%;
+}
+
+.image-container.transition {
+  transition: transform 0.4s ease-in-out;
 }
 
 .slider::before {
@@ -288,6 +300,10 @@ body.nav-open .nav-links{
   background-image: radial-gradient(circle at 50% 100%, transparent 50%, rgba(0, 0, 0, .3));
 }
 
+.slider picture {
+  flex: 1 0 100%;
+}
+
 .slider img {
   position: relative;
   max-height: 400px;
@@ -295,6 +311,8 @@ body.nav-open .nav-links{
 }
 
 .slider-controls {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: end;
   margin-top: -3.8rem;

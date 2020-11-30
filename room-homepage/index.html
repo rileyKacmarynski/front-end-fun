@@ -1,49 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="app.css">
   <title>Frontend Mentor | Room homepage</title>
 </head>
+
 <body>
   <header>
     <nav class="nav container">
-        <div id="nav-toggle" class="burger-container" aria-label="closed" aria-role="button">
-          <span class="burger top"></span>
-          <span class="burger middle"></span>
-          <span class="burger bottom"></span>
-        </div>
-        <img class="logo" src="images/logo.svg" alt="room logo">  
-        <ul class="nav-links" aria-hidden="true" >
-          <li><a href="#">home</a></li>
-          <li><a href="#">shop</a></li>
-          <li><a href="#">about</a></li>
-          <li><a href="#">contact</a></li>
-        </ul>
+      <div id="nav-toggle" class="burger-container" aria-label="closed" aria-role="button">
+        <span class="burger top"></span>
+        <span class="burger middle"></span>
+        <span class="burger bottom"></span>
+      </div>
+      <img class="logo" src="images/logo.svg" alt="room logo">
+      <ul class="nav-links" aria-hidden="true">
+        <li><a href="#">home</a></li>
+        <li><a href="#">shop</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">contact</a></li>
+      </ul>
     </nav>
   </header>
   <main>
     <section class="slider">
-      <picture>
-        <source srcset="images/desktop-image-hero-1.jpg" media="(min-width: 500px)">
-        <img src="images/mobile-image-hero-1.jpg" alt="table and chairs">
-      </picture>
+        <div class="image-container transition">
+          <picture>
+            <source srcset="images/desktop-image-hero-1.jpg" media="(min-width: 500px)">
+            <img src="images/mobile-image-hero-1.jpg" alt="table and chairs">
+          </picture>
+          <picture>
+            <source srcset="images/desktop-image-hero-2.jpg" media="(min-width: 500px)">
+            <img src="images/mobile-image-hero-2.jpg" alt="table and chairs">
+          </picture>
+          <picture>
+            <source srcset="images/desktop-image-hero-3.jpg" media="(min-width: 500px)">
+            <img src="images/mobile-image-hero-3.jpg" alt="table and chairs">
+          </picture>
+        </div>
     </section>
     <div class="slider-controls">
-      <div class="left"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M13 0L1 12l12 12" fill="none" fill-rule="evenodd"/></svg></div>
-      <div class="right"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M1 0l12 12L1 24"  fill="none" fill-rule="evenodd"/></svg></div>
+      <div id="left-button" class="left"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 0L1 12l12 12" fill="none" fill-rule="evenodd" /></svg></div>
+      <div id="right-button" class="right"><svg stroke="#FFF" width="14" height="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 0l12 12L1 24" fill="none" fill-rule="evenodd" /></svg></div>
     </div>
     <section class="cta container">
       <h1>Discover innovative ways to decorate</h1>
-      <p>We provide unmatched quality, comfort, and style for property owners across the country. 
-        Our experts combine form and function in bringing your vision to life. Create a room in your 
+      <p>We provide unmatched quality, comfort, and style for property owners across the country.
+        Our experts combine form and function in bringing your vision to life. Create a room in your
         own style with our collection and make your property a reflection of you and what you love.
       </p>
-      <a href="#" class="btn">shop now<svg class="arrow" width="40" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z" fill-rule="nonzero"/></svg></a>
+      <a href="#" class="btn">shop now<svg class="arrow" width="40" height="12" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z"
+            fill-rule="nonzero" /></svg></a>
     </section>
     <img src="images/image-about-dark.jpg" alt="table and chairs">
     <section class="about container">
@@ -62,4 +80,5 @@
   </div> -->
 </body>
 <script src="app.js"></script>
+
 </html>
