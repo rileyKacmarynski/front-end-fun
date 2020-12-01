@@ -8,17 +8,19 @@ nav.addEventListener('click', () => {
 const slider = document.querySelector('.image-container');
 let pictures = document.querySelectorAll('.slider picture');
 let currentImage = 0;
-const imageSize = pictures[0].clientWidth;
+let imageSize = pictures[0].clientWidth;
 
 document.querySelector('#right-button')
   .addEventListener('click', function(){
     clearInterval(intervalId);
+    imageSize = pictures[currentImage].clientWidth;
     nextImage();
   });
 
 document.querySelector('#left-button')
   .addEventListener('click', function(){
     clearInterval(intervalId);
+    imageSize = pictures[currentImage].clientWidth;
     previousImage();
   });
 

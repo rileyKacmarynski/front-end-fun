@@ -261,7 +261,7 @@ body.nav-open .logo {
 .nav-links li:hover::after,
 .nav-links li:focus::after {
   opacity: 1;
-  transform: scaleX(100%) translateX(-50%);
+  transform: scaleX(1) translateX(-50%);
 }
 
 body.nav-open .nav-links{
@@ -375,30 +375,15 @@ body.nav-open .nav-links{
     --space-large: 4rem;
   }
 
-  body {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 60vh 10vh 30vh;
-
-  }
-
   h1 {
     font-size: 3em;
   }
   
   main {
+    height: 100vh;
     display: grid;
-    grid-template-columns: subgrid;
-    grid-template-rows: subgrid;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-  }
-
-  header {
-    position: relative;
-    grid-column: 1 / span 6;
-    grid-row: 1;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 60vh 10vh 30vh;
   }
 
   .nav {
