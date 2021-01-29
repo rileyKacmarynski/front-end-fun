@@ -6,6 +6,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
 h1 {
@@ -21,12 +23,15 @@ h1 {
 
 .box {
   background-color: lightblue;
-  height: 30rem;
+  height: 10rem;
+  width: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20rem;
-  opacity: 0;
+  margin-bottom: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
   transition: background-color .25s linear;
 }
 
@@ -34,6 +39,58 @@ h1 {
   margin-top: 10rem;
 }
 
+
 .box.orange {
   background-color: lightcoral;
+}
+
+.root {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border: 3px dashed #ddd;
+  border-radius: 20px;
+  background-color: transparent; 
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10rem;
+  padding-bottom: 25rem;
+
+  font-size: 2rem;
+}
+
+
+.grid > p {
+  justify-self: center;
+  align-self: center;
+}
+
+.grid > * {
+  opacity: 0;
+  transition: transform .25s ease-in-out, opacity .25s linear;
+}
+
+.grid > *:nth-child(odd) {
+  transform: translateX(-200px);
+}
+
+.grid > *:nth-child(even) {
+  transform: translateX(200px);
+}
+
+.grid > .fade-in {
+  opacity: 1;
+  transform: translate(0);
 }

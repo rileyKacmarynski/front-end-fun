@@ -1,0 +1,350 @@
+/* Theming */
+:root {
+  --input-border: #8b8a8b;
+  --input-focus-h: 245;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+}
+
+
+/* Resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+select {
+   /* reset styles, removes arrow */
+   appearance: none;
+   background-color: transparent;
+   border: none;
+   padding: 0 1em 0 0;
+   margin: 0;
+   width: 100%;
+   font-family: inherit;
+   font-size: inherit;
+   cursor: inherit;
+   line-height: inherit;
+   outline: none;
+   z-index: 1;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/* spacing  */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2rem 5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 1rem;
+}
+
+section > * {
+  grid-column: span 1;
+}
+
+section > h2 {
+  grid-column: span 2;
+  text-transform: uppercase;
+  color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  );
+}
+
+.input-group {
+  display: grid;
+  grid-template-areas: "input-group";
+  gap: .25rem;
+}
+
+.input-group > * {
+  grid-area: "input-group";
+}
+
+
+/* text-like inputs */
+.input {
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 2px;
+  transition: 180ms box-shadow ease-in-out;
+}
+
+.input:not(textarea) {
+  line-height: 1;
+  height: 2.25rem;
+}
+
+input[type="file"] {
+  font-size: .9em;
+  padding-top: .35rem;
+}
+
+.input[readonly] {
+  border-style: dotted;
+  cursor: not-allowed;
+  color: #777;
+}
+
+.input[disabled] {
+  --input-border: #ccc;
+
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+textarea.input {
+  resize: vertical;
+}
+
+.input:focus {
+  border-color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  );
+
+  box-shadow: 0 0 0 3px
+    hsl(
+        var(--input-focus-h),
+        var(--input-focus-s),
+        calc(var(--input-focus-l) + 40%),
+        0.8
+      );
+}
+
+.input:focus {
+  outline: 3px solid transparent;
+}
+
+
+/* select lists */
+.select {
+  position: relative;
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  /* width: 100%; */
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 2px solid var(--input-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25em;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+
+/* arrow using clip path */
+.select:not(.select--multiple)::after {
+  content: '';
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--input-border);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+}
+
+select,
+.select:after {
+  grid-area: select;
+}
+
+.focus {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: inherit;
+  border: 2px solid var(--input-border);
+  transition: 180ms box-shadow ease-in-out;
+}
+
+select:focus + .focus {
+  border: 2px solid 
+    hsl(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      var(--input-focus-l)
+    );
+
+  box-shadow: 0 0 0 3px
+    hsl(
+        var(--input-focus-h),
+        var(--input-focus-s),
+        calc(var(--input-focus-l) + 40%),
+        0.8
+      );
+}
+
+select[multiple] {
+  padding-right: 0;
+  height: 6rem;
+}
+
+select[multiple] option {
+  white-space: normal;
+}
+
+.select--disabled {
+  cursor: not-allowed;
+  background-color: #eee;
+  background-image: linear-gradient(to top, #ddd, #eee 33%);
+}
+
+
+/* checkboxes */
+.checkbox {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: .5rem;
+  font-size: 1rem;
+  /* color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  ); */
+}
+
+.checkbox__input input {
+  opacity: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.checkbox__control {
+  display: inline-grid;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  border: 0.1em solid currentColor;
+}
+
+.checkbox__input {
+  display: grid;
+  grid-template-areas: "checkbox";
+}
+
+.checkbox__input > * {
+  grid-area: checkbox;
+}
+
+.checkbox__control svg {
+  transition: opacity 0.1s ease-in 25ms;
+  opacity: 0;
+}
+
+.checkbox__input input:checked + .checkbox__control svg {
+  opacity: 1;
+}
+
+.checkbox__input input:focus + .checkbox__control {
+  box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em hsl(
+        var(--input-focus-h),
+        var(--input-focus-s),
+        var(--input-focus-l)
+      );
+
+  border-color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  );
+}
+
+.checkbox__input input:disabled + .checkbox__control {
+  color: #ccc;
+}
+
+.checkbox--disabled {
+  color: #ccc;
+}
+
+/* radio buttons */
+.radio {
+  color: #000;
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-gap: 0.5em;
+}
+
+.radio__input input {
+  /*  for some reason height/width 0 doesn't work on firefox */
+  opacity: 0;
+  /* height: 0;
+  width: 0; */
+  position: absolute;
+  top: 0;
+}
+
+.radio__control {
+  display: grid;
+  place-items: center;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 0.1em solid currentColor;
+  transform: translateY(-0.0em);
+}
+
+.radio__input {
+  /*  this doesn't work on firefox, height: 0 doesn't do anything */
+  display: flex;
+  position: relative;
+}
+
+.radio__label {
+  line-height: 1;
+  transition: 180ms all ease-in-out;
+  opacity: 1;
+}
+
+input + .radio__control::before {
+  content: '';
+  width: .5em;
+  height: .5em;
+  box-shadow: inset .5em .5em currentColor;
+  border-radius: 50%;
+  transition: 180ms transform ease-in-out,
+              180ms opacity ease-in-out;
+  transform: scale(0);
+}
+
+input:checked + .radio__control::before {
+  transform: scale(1);
+}
+
+.radio__input input:focus + .radio__control {
+  box-shadow: 0 0 0 0.05em #fff, 0 0 0.15em 0.1em hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l));
+
+  border-color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  );
+}

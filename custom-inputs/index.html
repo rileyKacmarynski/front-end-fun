@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Inputs</title>
+  <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+  <section class="text-inputs">
+    <h2>Text Inputs</h2>
+    <div class="input-group">
+      <label for="text-input">Text Input</label>
+      <input class="input" id="text-input" type="text" />
+    </div>
+    <div class="input-group">
+      <label for="date-input">Date Input</label>
+      <input class="input" id="date-input" type="date" />
+    </div>
+    <div class="input-group">
+      <label for="file-input">File Input</label>
+      <input id="file-input" class="input" type="file" />
+    </div>
+    <div class="input-group">
+      <label for="readonly-input">Read-Only Input</label>
+      <input class="input" id="readonly-input" type="text" readonly value="This can only be copied" />
+    </div>
+    <div class="input-group">
+      <label for="disabled-input">Disabled Input</label>
+      <input class="input" id="disabled-input" type="text" disabled />
+    </div>
+    <div class="input-group">
+      <label for="textarea">Textarea</label>
+      <textarea class="input" id="textarea"></textarea>
+    </div>
+    <div class="input-group">
+      <label for="textarea-disabled">Textarea Disabled</label>
+      <textarea class="input" id="textarea-disabled" disabled></textarea>
+    </div>
+  </section>
+  <section>
+    <h2>Select</h2>
+    <div class="input-group">
+      <label for="standard-select">Standard Select</label>
+      <div class="select">
+        <select id="standard-select">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 4">Option 4</option>
+          <option value="Option 5">Option 5</option>
+          <option value="Option length">Option that has too long of a value to fit</option>
+        </select>
+        <span class="focus"></span>
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="multi-select">Multiple Select</label>
+      <div class="select select--multiple">
+        <select id="multi-select" multiple>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 4">Option 4</option>
+          <option value="Option 5">Option 5</option>
+          <option value="Option length">Option that has too long of a value to fit</option>
+        </select>
+        <span class="focus"></span>
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="standard-select-disabled">Disabled Select</label>
+      <div class="select select--disabled">
+        <select id="standard-select-disabled" disabled>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 4">Option 4</option>
+          <option value="Option 5">Option 5</option>
+          <option value="Option length">Option that is a long value and could wrap</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="standard-select">Disabled Multiple Select</label>
+      <div class="select select--disabled select--multiple">
+        <select id="multi-select-disabled" multiple disabled>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 4">Option 4</option>
+          <option value="Option 5">Option 5</option>
+          <option value="Option length">Option that is a long value and could wrap</option>
+        </select>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Checkbox</h2>
+    <div class="input-group">
+      <label class="checkbox">
+        <span class="checkbox__input">
+          <input type="checkbox" name="checkbox">
+          <span class="checkbox__control">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+              <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+            </span>
+          </span>
+          <span class="radio__label">Checkbox</span>
+        </label>
+      </div>
+    <div class="input-group">
+      <label class="checkbox" style="--color: #FE3C53;">
+        <span class="checkbox__input">
+          <input type="checkbox" name="checked" checked>
+          <span class="checkbox__control">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+              <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+            </span>
+          </span>
+          <span class="radio__label">Checkbox - Checked</span>
+        </label>
+      </div>
+    <div class="input-group">
+      <label class="checkbox checkbox--disabled">
+        <span class="checkbox__input">
+          <input type="checkbox" name="disabled" disabled>
+          <span class="checkbox__control">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+              <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+            </span>
+          </span>
+          <span class="radio__label">Checkbox - Disabled</span>
+        </label>
+      </div>
+    <div class="input-group">
+      <label class="checkbox checkbox--disabled">
+        <span class="checkbox__input">
+          <input type="checkbox" name="disabled-checked" disabled checked>
+          <span class="checkbox__control">
+            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+              <path fill='none' stroke='currentColor' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /></svg>
+            </span>
+          </span>
+          <span class="radio__label">Checkbox - Disabled Checked</span>
+        </label>
+      </div>
+  </section>
+  <section>
+    <div class="input-group">
+      <label class="radio radio-gradient">
+        <span class="radio__input">
+          <input type="radio" name="radio">
+          <span class="radio__control"></span>
+        </span>
+        <span class="radio__label">Radio 1 - radial-gradient</span>
+      </label>
+    </div>
+    
+    <div class="input-group">
+      <label class="radio radio-before">
+        <span class="radio__input">
+          <input type="radio" name="radio">
+          <span class="radio__control"></span>
+        </span>
+        <span class="radio__label">Radio 2 - :before</span>
+      </label>
+    </div>
+  </section>
+</body>
+
+</html>
